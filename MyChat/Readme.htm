@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<h1>
+	Readme for MyChat (Visual Studio 2012)</h1>
+<p>
+	MyChat is a simple WPF application that demonstrates the usage of the AutoRefreshWrapper
+	outlined in <a href="http://www.codeproject.com/Articles/233770/AutoRefresh-Entity-Framework-data-using-SQL-Server">
+		http://www.codeproject.com/Articles/233770/AutoRefresh-Entity-Framework-data-using-SQL-Server</a>.</p>
+<p>
+	The program can be started several times on one or different computers. In each 
+	instance the user can enter a name and a message and then press the &quot;Send&quot; 
+	button. The message will be sent to the database and each instance will be 
+	notified about the change and will update the list of messages immediately.</p>
+<p>
+	Note that you might need to change the database connection by editing the 
+	application config (MyChat.exe.config). The default is &quot;.\SQLEXPRESS&quot; 
+  or &quot;(localdb)\v11.0&quot;.</p>
+<p>
+  If the database (named &quot;MyChat.Model.ChatContext&quot; unless changed in 
+  MyChat.exe.config) doesn't exist, Code First will create it. Make sure that 
+	your database server is configured to work with Service Broker and that you&#39;re 
+	using sufficient credentials for login.</p>
+</html>
