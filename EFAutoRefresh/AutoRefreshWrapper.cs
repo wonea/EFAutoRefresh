@@ -4,11 +4,10 @@
 // 
 using System;
 using System.Collections.Generic;
-using System.Data.Objects.DataClasses;
-using System.Data.Objects;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 
 namespace EFAutoRefresh
 {

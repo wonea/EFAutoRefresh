@@ -5,7 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Objects;
+using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -38,7 +38,7 @@ namespace EFAutoRefresh
             else
                 csForEF = csInEF;
 			var newConnectionString = new
-			  System.Data.EntityClient.EntityConnectionStringBuilder(csForEF).ProviderConnectionString;
+              System.Data.Entity.Core.EntityClient.EntityConnectionStringBuilder(csForEF).ProviderConnectionString;
 			if (!connectionStrings.Contains(newConnectionString))
 			{
 				connectionStrings.Add(newConnectionString);
