@@ -1,35 +1,22 @@
 ﻿<Window x:Class="MyChat.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:MyChat="clr-namespace:MyChat" Title="My Chat" Height="350" Width="525"
-        >
-
+        xmlns:MyChat="clr-namespace:MyChat" Title="My Chat" Height="350" Width="525">
     <Window.DataContext>
-
         <MyChat:MainViewModel x:Name="viewModel" />
-
     </Window.DataContext>
 
     <Grid>
-
         <Grid.RowDefinitions>
-
             <RowDefinition Height="200*" />
-
             <RowDefinition Height="Auto" />
-
             <RowDefinition Height="63*" />
-
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-
             <ColumnDefinition Width="Auto" />
-
             <ColumnDefinition Width="268*" />
-
             <ColumnDefinition Width="117*" />
-
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1"
                      Name="textBlock1"
@@ -60,16 +47,12 @@
                      ItemsSource="{Binding Path=Chat}">
 
             <DataGrid.Columns>
-
                 <DataGridTextColumn Binding="{Binding Path=Date}"
                                        Header="Date" />
-
                 <DataGridTextColumn Binding="{Binding Path=Name}"
                                        Header="Name" />
-
                 <DataGridTextColumn Binding="{Binding Path=Message}"
                                        Header="Message" />
-
             </DataGrid.Columns>
 
         </DataGrid>
