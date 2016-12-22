@@ -43,3 +43,7 @@ MyChat/bin/Debug/MyChat.exe.config
 MyChat/bin/Debug/MyChat.vshost.exe.config
 MyChat/bin/Debug/MyChat.vshost.exe.manifest
 /.vs/EFAutoRefresh/v14/.suo
+/MyChat/bin
+/MyChat/obj
+/EFAutoRefresh/obj
+/EFAutoRefresh/bin
