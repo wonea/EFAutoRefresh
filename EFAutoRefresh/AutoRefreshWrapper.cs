@@ -16,20 +16,20 @@ namespace EFAutoRefresh
 	public class AutoRefreshWrapper<T> : IEnumerable<T>, INotifyRefresh
 		where T : class
 	{
-		private IEnumerable<T> entitySet;
+		private readonly IEnumerable<T> _entitySet;
 		public AutoRefreshWrapper(ObjectQuery<T> objectQuery, RefreshMode refreshMode)
 		{
-			this.entitySet = objectQuery;
+			_entitySet = objectQuery;
 			objectQuery.Context.AutoRefresh(refreshMode, this);
 		}
 
-#if DBCONTEXT
+        //#if DBCONTEXT
         public AutoRefreshWrapper(DbSet<T> dbSet, DbContext dbContext, RefreshMode refreshMode)
         {
-            this.entitySet = dbSet;
+            _entitySet = dbSet;
             ((System.Data.Entity.Infrastructure.IObjectContextAdapter)dbContext).ObjectContext.AutoRefresh(refreshMode, this);
         }
-#endif
+        //#endif
 
 		public void StopAutoRefresh()
 		{
@@ -38,22 +38,20 @@ namespace EFAutoRefresh
 
 		public IEnumerator<T> GetEnumerator()
 		{
-			return entitySet.GetEnumerator();
+			return _entitySet.GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return this.GetEnumerator();
+			return GetEnumerator();
 		}
 
 		public void OnRefresh()
 		{
 			try
 			{
-				if (this.CollectionChanged != null)
-					CollectionChanged(this,
-					  new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-
+			    CollectionChanged?.Invoke(this,
+			        new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 			}
 			catch (Exception ex)
 			{
