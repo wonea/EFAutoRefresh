@@ -29,7 +29,7 @@ namespace MyChat
                 MessageBox.Show(
                     $"{ex.Message}\n\n{ex.InnerException?.Message}\n\nPlease make sure that you can logon to the SQL Server \"{MyContext.Database.Connection.DataSource}\" or edit the file \"MyChat.exe.config\".",
                     "MyChat", MessageBoxButton.OK, MessageBoxImage.Error);
-                App.Current.Shutdown();
+                Current.Shutdown();
             }
         }
 
