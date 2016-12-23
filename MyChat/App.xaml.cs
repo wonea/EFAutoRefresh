@@ -3,13 +3,7 @@
 // 
 // 
 using MyChat.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Data.Entity.Core;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MyChat
@@ -26,23 +20,19 @@ namespace MyChat
             try
             {
                 MyContext = new ChatContext();
-                ((System.Data.Entity.Infrastructure.IObjectContextAdapter)MyContext).ObjectContext.Connection.Open();
+                ((System.Data.Entity.Infrastructure.IObjectContextAdapter) MyContext).ObjectContext.Connection.Open();
                 base.OnStartup(e);
                 new MainWindow().Show();
             }
             catch (EntityException ex)
             {
                 MessageBox.Show(
-                    string.Format("{0}\n\n{1}\n\nPlease make sure that you can logon to the SQL Server \"{2}\" or edit the file \"MyChat.exe.config\".", ex.Message, ex.InnerException != null ? ex.InnerException.Message : null, MyContext.Database.Connection.DataSource),
+                    $"{ex.Message}\n\n{ex.InnerException?.Message}\n\nPlease make sure that you can logon to the SQL Server \"{MyContext.Database.Connection.DataSource}\" or edit the file \"MyChat.exe.config\".",
                     "MyChat", MessageBoxButton.OK, MessageBoxImage.Error);
                 App.Current.Shutdown();
             }
         }
 
-        public new static App Current
-        {
-            get { return (Application.Current as App); }
-        }
+        public new static App Current => Application.Current as App;
     }
 }
-
